@@ -12,11 +12,30 @@ export const fetchData = () => dispatch => {
         .get('https://api.adviceslip.com/advice')
         .then(res=>{
             console.log('result in api request',res);
-            const slip = res.data.slip.advice;
+            const slip = [res.data.slip.advice];
             dispatch({type: DATA_SUCCESS, payload: slip});
         })
         .catch(err=>{
             console.log('error: ', err)
             dispatch({ type: DATA_ERROR, payload: err});
         })
+}
+
+export const searchData = (query = 'life') => dispatch =>{
+    console.log('query in action', query)
+    dispatch({
+        type: FETCH_DATA
+    });
+    axios
+        .get(`https://api.adviceslip.com/advice/search/${query}`)
+        .then(res=>{
+            console.log('result in searchdata api req',res);
+            const slipArr = []
+            res.data.slips.map(slip=>slipArr.push(slip.advice));
+            dispatch({type: DATA_SUCCESS, payload: slipArr})
+        })
+        .catch(err=>{
+            console.log('error in searchdata: ',err)
+            dispatch({type: DATA_ERROR, payload: err})
+        });
 }

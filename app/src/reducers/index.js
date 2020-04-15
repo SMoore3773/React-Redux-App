@@ -1,8 +1,11 @@
 import {FETCH_DATA, DATA_SUCCESS, DATA_ERROR} from '../actions/actionsIndex';
 const initialState = {
-    slip: 'Click the button to get words of wisdom',
+    slip: ['Click the button to get words of wisdom'],
     error:'',
-    isLoading: false
+    query:'life',
+    isLoading: false,
+    hasMessage:false,
+    message:''
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -19,6 +22,13 @@ export const rootReducer = (state = initialState, action) => {
                 error: '',
                 isLoading:false
             }
+        //  case DATA_MESSAGE:
+        //     return{
+        //         ...state,
+        //         isLoading: false,
+        //         hasMessage: true,
+        //         message: DataCue.payload
+        //         }
         case DATA_ERROR:
             return{
                 ...state,
