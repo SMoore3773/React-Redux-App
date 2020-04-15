@@ -31,7 +31,8 @@ export const searchData = (query = 'life') => dispatch =>{
         .then(res=>{
             console.log('result in searchdata api req',res);
             const slipArr = []
-            res.data.slips.map(slip=>slipArr.push(slip.advice));
+            res.data.message ? (slipArr.push(res.data.message.text)):(
+            res.data.slips.map(slip=>slipArr.push(slip.advice)));
             dispatch({type: DATA_SUCCESS, payload: slipArr})
         })
         .catch(err=>{
