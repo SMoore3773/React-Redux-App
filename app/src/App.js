@@ -1,14 +1,24 @@
 import React from 'react';
-
+import {createStore, applyMiddleware} from 'redux';
+import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
+import {rootReducer} from './reducers';
+import Slip from './components/slip';
 import './App.css';
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-      <section>all the stuff here</section>
-    </div>
+    <Provider store = {store}>
+      <div className="App">
+        <header className="App-header">
+        </header>
+        <section>
+          <Slip />
+        </section>
+      </div>
+    </Provider>
   );
 }
 
