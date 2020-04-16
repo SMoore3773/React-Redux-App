@@ -4,8 +4,7 @@ const initialState = {
     error:'',
     query:'life',
     isLoading: false,
-    hasMessage:false,
-    message:''
+ 
 }
 
 export const rootReducer = (state = initialState, action) => {
@@ -22,13 +21,6 @@ export const rootReducer = (state = initialState, action) => {
                 error: '',
                 isLoading:false
             }
-        //  case DATA_MESSAGE:
-        //     return{
-        //         ...state,
-        //         isLoading: false,
-        //         hasMessage: true,
-        //         message: DataCue.payload
-        //         }
         case DATA_ERROR:
             return{
                 ...state,

@@ -2,6 +2,7 @@ import React, {useState}from 'react';
 import {connect} from 'react-redux';
 import {fetchData, searchData} from '../actions/actionsIndex';
 import SlipRender from './slipRender';
+import '../App.css';
 
 const Slip = props => {
     console.log('props in slip component', props)
@@ -18,12 +19,12 @@ const Slip = props => {
     console.log('props.slip in slip.js',props.slip)
     return(
         <div className='slipAdv'>
-            <button onClick={()=>props.fetchData()}>Get Some Advice!</button>
-            <form>
-                <input onChange={handleChanges} type='text'/>
-                <button type='submit' onClick={handleSubmit}>Search For Advice</button>
+            <button className='randomAdvButton' onClick={()=>props.fetchData()}>Get Some Advice!</button>
+            <form className='searchForm'>
+                <input className='searchInput' onChange={handleChanges} type='text'/>
+                <button className='searchButton' type='submit' onClick={handleSubmit}>Search For Advice</button>
             </form>
-            <p>{props.slip.map(slip=><SlipRender key={slip.id} slip={slip}/>)}</p>
+            <div className='slipMap'>{props.slip.map(slip=><SlipRender key={slip.id} slip={slip}/>)}</div>
         </div>
     );
 };
