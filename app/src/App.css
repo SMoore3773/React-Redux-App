@@ -19,13 +19,17 @@ body{
 }
 .slipArray{
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  
 }
 .slip{
   background-color:whitesmoke;
   width: 100%;
   padding: 1rem;
   margin:.5rem;
+  box-shadow: 2px 2px 10px black;
 }
 .randomAdvButton{
   width: 35%;
@@ -34,8 +38,10 @@ body{
   font-size: 2rem;
 }
 .searchForm{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 31%;
-  
   padding:2rem;
   margin:1rem;
   font-size: 2rem;
@@ -44,6 +50,7 @@ body{
   margin:.5rem;
   width:40%;
   font-size: 1.25rem;
+  height: 1.5rem;
 }
 .searchButton{
   margin:.5rem;
